@@ -11,7 +11,7 @@ elsif nota <= 60
     puts "Nota conceito 'C'"
 elsif nota <=80
     puts "Nota conceito 'B'"
-else 
+elsif
     puts "Nota conceito 'A'"
 end 
 gets 
