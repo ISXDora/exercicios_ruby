@@ -16,5 +16,10 @@ puts "false or false = #{false or false}"
 puts "true || false = #{true || false}"
 puts "true || true = #{true || true}"
 
+
+puts "true ^ true = #{true ^ true}"
+puts "true ^ false = #{true ^ false}"
+puts "false ^ false = #{false ^ false}"
+puts "false ^ true = #{false ^ true}"
 gets 
 
