@@ -11,4 +11,10 @@ puts "true && false = #{true && false}"
 puts "false && false = #{false && false}"
 puts "false && true = #{false && true}"
 
+puts "true or false = #{true or false}"
+puts "false or false = #{false or false}"
+puts "true || false = #{true || false}"
+puts "true || true = #{true || true}"
+
 gets 
+
