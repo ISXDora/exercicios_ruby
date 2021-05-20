@@ -40,22 +40,22 @@ notas << notas2
 puts "Notas disponíveis para saque:"
 
   if  notas[5] != [0]
-    puts "R$ 2,00   | #{notas[5]}"
+    puts "#{notas[5]}----notas de R$ 2,00"
   end
   if  notas[4] != [0]
-    puts "R$ 5,00   | #{notas[4]}"
+    puts "#{notas[4]}----notas de R$ 5,00"
   end
   if  notas[3] != [0]
-    puts "R$ 10,00  | #{notas[3]}"
+    puts "#{notas[3]}----notas de R$ 10,00"
   end
   if  notas[2] != [0]
-    puts "R$ 20,00  | #{notas[2]}"
+    puts "#{notas[2]}----notas de R$ 20,00"
   end
   if  notas[1] != [0] 
-    puts "R$ 50,00  | #{notas[1]}"
+    puts "#{notas[1]}----notas de R$ 50,00"
   end
   if  notas[0] != [0] 
-      puts "R$ 100,00 | #{notas[0]}" 
+    puts "#{notas[0]}----notas de R$ 100,00" 
   end
       #puts valor1
       #puts notas100
