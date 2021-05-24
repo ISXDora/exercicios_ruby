@@ -1,11 +1,13 @@
 require"./libdesafio2.rb"
 
-conta = ContaBancaria.new(1, 500)
+conta1 = ContaBancaria.new(1, 500)
+conta2 = ContaBancaria.new(2, 1000)
+conta_destino = ContaBancaria.new(3, 2000)
 
-def contarNotas
 
-  valor = 0
-  valor = gets.chomp.to_i
+def contarNotas(valor)
+
+  valor = valor
 
   cedulas_50 = 0
   cedulas_20 = 0
@@ -14,6 +16,7 @@ def contarNotas
   cedulas_2 = 0
 
   while valor != 0
+    
     if valor >= 50
       cedulas = valor / 50
       valor = valor - (50 * cedulas)
@@ -42,16 +45,22 @@ def contarNotas
       puts "São permitidos apenas saques múltiplos de R$ 2, R$ 5, R$ 10, R$ 20 e R$ 50 reais!"
       break
     end
+  end
 
-    puts "#{cedulas_50} nota(s) de R$ 50 reais" if cedulas_50 > 0
-    puts "#{cedulas_20} nota(s) de R$ 20 reais" if cedulas_20 > 0
-    puts "#{cedulas_10} nota(s) de R$ 10 reais" if cedulas_10 > 0
-    puts "#{cedulas_5} nota(s) de R$ 5 reais" if cedulas_5 > 0
-    puts "#{cedulas_2} nota(s) de R$ 2 reais" if cedulas_2 > 0
-
+        puts "#{cedulas_50} nota(s) de R$ 50 reais" if cedulas_50 > 0
+        puts "#{cedulas_20} nota(s) de R$ 20 reais" if cedulas_20 > 0
+        puts "#{cedulas_10} nota(s) de R$ 10 reais" if cedulas_10 > 0
+        puts "#{cedulas_5} nota(s) de R$ 5 reais" if cedulas_5 > 0
+        puts "#{cedulas_2} nota(s) de R$ 2 reais" if cedulas_2 > 0
+        
 end
-end 
+def saldo 
+    return @saldo
+end
 
+def saldo=(saldo)
+    @saldo = saldo
+end 
 
 begin
     
@@ -72,25 +81,29 @@ begin
         menu = gets.chomp.to_i
         case menu
         when 1
-           puts "Saldo R$ #{conta.saldo}"
+           puts "Saldo R$ #{localizar_conta(numero).saldo}"
             puts "------------------------------"
             break
         when 2 
 
             puts"Quanto dejesa depositar: "
             puts"------------------------------"
-            valor = gets.chomp.to_i
-            conta.depositar(valor)
+            valor = gets.chomp.to_f
+            localizar_conta(numero).depositar(valor)
             puts"Depósito realizado com sucesso!"
             puts "------------------------------"
             break
         when 3
 
             puts "Quanto deseja sacar? (cédulas disponíveis: R$ 50, R$ 20, R$ 10, R$ 5 e R$ 2):"
-            "------------------------------"
-            valor = gets.chomp.to_i
-            if conta.sacar <= true 
-            contarNotas.valor
+            puts "-----------------------------------------------------------------------------"
+            valor = gets.chomp.to_f
+            if localizar_conta(numero).sacar(valor)
+                puts "Contando cédulas..."
+                puts "------------------------------"
+                contarNotas(valor)
+                puts "Saque realizado com sucesso!"
+                puts "------------------------------"
             else 
             puts "Saldo insuficiente!"
             end
@@ -100,7 +113,26 @@ begin
         when 4 
             puts "Digite o número da conta de destino:"
             puts "------------------------------"
+            numero_destino = gets.chomp.to_i
+            if localizar_conta(numero_destino) == nil
+                puts "Conta de destino não localizada!"   
+            else
+                puts "Quanto deseja transferir:"
+                puts "------------------------------"
+                valor = gets.chomp.to_f
+                if localizar_conta(numero).transferir(valor, localizar_conta(numero_destino))
+                puts "Transferência  realizada com sucesso!"
+                else 
+                    puts "Saldo insulficiente!"
+                end
+                
+            end
+
+            puts "------------------------------"
             break
+        else 
+            puts "Operação Inválida!"
+            puts "------------------------------"
         end
 
     end
