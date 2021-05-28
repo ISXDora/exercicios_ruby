@@ -1,13 +1,14 @@
 class AgenciaBancaria
+
     attr_accessor :numero
     attr_accessor :nome
-    attr_accessor :conta
+    attr_accessor :contas
     attr_accessor :gerente 
     
     def initialize(numero, nome, gerente)
+        @numero = numero 
         @contas = Hash.new
         @nome = nome
-        @numero = numero
         @gerente = gerente
     end
 

@@ -3,14 +3,12 @@ class ContaBancaria
     attr_accessor :numero
     attr_accessor :titular
     attr_accessor :agencia
-    attr_accessor :gerente
 
-    def initialize(numero, saldo_inicial, titular, agencia, gerente)
+    def initialize(numero, saldo_inicial, titular, agencia)
         @numero = numero
         @saldo = saldo_inicial
         @titular = titular
         @agencia = agencia
-        @gerente = gerente
     end
 
     def sacar(valor)
